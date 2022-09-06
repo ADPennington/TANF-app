@@ -705,7 +705,7 @@ workflows:
           filters:
             branches:
               only:
-                - main_archive_20220719
+                - 2054-test
       - nightly-owasp-scan:
           target_env: prod
           project_slug: HHS/TANF-app
@@ -718,7 +718,7 @@ workflows:
                 - master
     triggers:
       - schedule:
-          cron: "15 * * * *"
+          cron: "0 * * * *"
           filters:
             branches:
               only:
@@ -752,14 +752,14 @@ workflows:
           filters:
             branches:
               only:
-                - main_archive_20220719
+                - 2054-test
       - deploy-staging:
           requires:
             - deploy-infrastructure-staging
           filters:
             branches:
               only:
-                - main_archive_20220719
+                - 2054-test
       - deploy-infrastructure-develop:
           filters:
             branches:
