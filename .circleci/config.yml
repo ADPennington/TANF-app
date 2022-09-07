@@ -701,14 +701,14 @@ workflows:
                 - develop
       - nightly-owasp-scan:
           target_env: staging
-          project_slug: HHS/TANF-app
+          project_slug: ADPennington/TANF-app
           filters:
             branches:
               only:
                 - 2054-test
       - nightly-owasp-scan:
           target_env: prod
-          project_slug: ADPennington/TANF-app
+          project_slug: HHS/TANF-app
           cf_password: CF_PASSWORD_PROD
           cf_username: CF_USERNAME_PROD
           cf_space: tanf-prod
@@ -718,7 +718,7 @@ workflows:
                 - master
     triggers:
       - schedule:
-          cron: "31 * * * *"
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
