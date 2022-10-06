@@ -498,7 +498,7 @@ jobs:
         enum: [ "staging", "develop", "prod" ]
       project_slug:
         type: enum
-        enum: [ "raft-tech/TANF-app", "HHS/TANF-app", "ADPennington23/TANF-app" ]
+        enum: [ "raft-tech/TANF-app", "HHS/TANF-app"]
         default: "raft-tech/TANF-app"
     steps:
       - checkout
