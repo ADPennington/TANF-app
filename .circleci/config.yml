@@ -705,7 +705,7 @@ workflows:
           filters:
             branches:
               only:
-                - 2054-test
+                - 2054-test-stop
       - nightly-owasp-scan:
           target_env: prod
           project_slug: HHS/TANF-app
