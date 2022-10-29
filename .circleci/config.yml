@@ -505,10 +505,10 @@ jobs:
       - sudo-check
       - cf-check
       - docker-compose-check
-      - run-owasp-scan:
-          environment: nightly
-          target: backend
-          target_env: <<parameters.target_env>>
+      #- run-owasp-scan:
+      #    environment: nightly
+      #    target: backend
+      #    target_env: <<parameters.target_env>>
       - run-owasp-scan:
           environment: nightly
           target: frontend
