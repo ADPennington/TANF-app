@@ -8,7 +8,7 @@ orbs:
 executors:
   docker-executor:
     docker:
-      - image: cimg/python:3.10.1
+      - image: cimg/python:3.10.4
         user: root
   machine-executor:
     machine:
@@ -718,7 +718,7 @@ workflows:
                 - master
     triggers:
       - schedule:
-          cron: "11,43,55 * * * *"
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
