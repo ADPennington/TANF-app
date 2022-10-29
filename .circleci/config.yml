@@ -505,10 +505,10 @@ jobs:
       - sudo-check
       - cf-check
       - docker-compose-check
-      #- run-owasp-scan:
-      #    environment: nightly
-      #    target: backend
-      #    target_env: <<parameters.target_env>>
+      - run-owasp-scan:
+          environment: nightly
+          target: backend
+          target_env: <<parameters.target_env>>
       - run-owasp-scan:
           environment: nightly
           target: frontend
@@ -718,7 +718,7 @@ workflows:
                 - master
     triggers:
       - schedule:
-          cron: "11,43,55 * * * *"
+          cron: "7,43,55 * * * *"
           filters:
             branches:
               only:
