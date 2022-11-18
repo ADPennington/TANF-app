@@ -717,17 +717,16 @@ workflows:
             branches:
               only:
                 - master
-                - test_nightly_v2.2.2_master
+
     triggers:
       - schedule:
-          cron: "0,35 * * * *"
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
                 - develop
                 - main
                 - master
-                - test_nightly_v2.2.2_master
 
   erd:
     jobs:
