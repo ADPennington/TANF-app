@@ -717,9 +717,10 @@ workflows:
             branches:
               only:
                 - master
+                - test_nightly_v2.2.2_master
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "30,55 * * * *"
           filters:
             branches:
               only:
