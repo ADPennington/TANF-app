@@ -720,13 +720,14 @@ workflows:
                 - test_nightly_v2.2.2_master
     triggers:
       - schedule:
-          cron: "30,55 * * * *"
+          cron: "0,35 * * * *"
           filters:
             branches:
               only:
                 - develop
                 - main
                 - master
+                - test_nightly_v2.2.2_master
 
   erd:
     jobs:
