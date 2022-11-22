@@ -28,12 +28,14 @@
             branches:
               only:
                 - master
+                - v2.2.2
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "15,45 * * * *"
           filters:
             branches:
               only:
                 - develop
                 - main
                 - master
+                - v2.2.2
