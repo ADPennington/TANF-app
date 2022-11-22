@@ -31,7 +31,7 @@
                 - v2.2.2
     triggers:
       - schedule:
-          cron: "15,45 * * * *"
+          cron: "13,43 * * * *"
           filters:
             branches:
               only:
