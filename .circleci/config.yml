@@ -720,7 +720,7 @@ workflows:
                 - master
     triggers:
       - schedule:
-          cron: "25,50 * * * *"
+          cron: "35,55 * * * *"
           filters:
             branches:
               only:
