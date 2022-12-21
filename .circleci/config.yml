@@ -708,7 +708,6 @@ workflows:
             branches:
               only:
                 - main
-                - v222_main
       - nightly-owasp-scan:
           target_env: prod
           cf_password: CF_PASSWORD_PROD
@@ -727,7 +726,6 @@ workflows:
                 - develop
                 - main
                 - master
-                - v222_main
 
   erd:
     jobs:
