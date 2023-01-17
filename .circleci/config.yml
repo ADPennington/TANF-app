@@ -753,14 +753,14 @@ workflows:
           filters:
             branches:
               only:
-                - main
+                - staging-v223
       - deploy-staging:
           requires:
             - deploy-infrastructure-staging
           filters:
             branches:
               only:
-                - main
+                - staging-v223
       - deploy-infrastructure-develop:
           filters:
             branches:
