@@ -19,7 +19,7 @@
           filters:
             branches:
               only:
-                - staging_v3000
+                - staging_v300
       - nightly-owasp-scan:
           target_env: prod
           cf_password: CF_PASSWORD_PROD
