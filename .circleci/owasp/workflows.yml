@@ -20,6 +20,7 @@
             branches:
               only:
                 - main
+                - v301_68_staging
       - nightly-owasp-scan:
           target_env: prod
           cf_password: CF_PASSWORD_PROD
