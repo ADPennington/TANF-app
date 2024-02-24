@@ -19,6 +19,7 @@
           filters:
             branches:
               only:
+                - spike-resolve-nightly-scan
                 - main
                 - master
                 - /^release.*/
@@ -26,6 +27,7 @@
           filters:
             branches:
               only:
+                - spike-resolve-nightly-scan
                 - main
                 - master
                 - /^release.*/
@@ -35,6 +37,7 @@
           filters:
             branches:
               only:
+                - spike-resolve-nightly-scan
                 - main
                 - master
                 - /^release.*/
@@ -44,6 +47,7 @@
           filters:
             branches:
               only:
+                - spike-resolve-nightly-scan
                 - main
                 - master
                 - /^release.*/
