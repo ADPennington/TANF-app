@@ -17,7 +17,7 @@ executors:
   large-machine-executor:
     machine:
       docker_layer_caching: false
-      image: ubuntu-2204:2022.10.1
+      image: default
     resource_class: large
 
 parameters:
