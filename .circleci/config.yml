@@ -79,6 +79,7 @@ workflows:
           filters:
             branches:
               only:
+                - spike-resolve-nightly-scan
                 - develop
                 - main
                 - master
