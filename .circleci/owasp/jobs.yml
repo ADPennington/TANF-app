@@ -86,5 +86,4 @@
       - run:
         name: Run post-processing task to record OWASP ZAP results
         command: echo "extra command"
-      #     command: ./scripts/run_owasp_scan.sh
           
