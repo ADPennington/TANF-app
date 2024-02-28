@@ -80,10 +80,10 @@
           environment: nightly
           target: frontend
           target_env: <<parameters.target_env>>
-      #test if something weird is happening after frontend scan
       - run:
           name: Verify completion of frontend scan
           command: echo "Frontend scan completed successfully"
       - run:
           name: Run post-processing task to record OWASP ZAP results
+          target_env: <<parameters.target_env>>
           command: ./scripts/run_owasp_scan.sh tdp-backend-<<parameters.target_env>>
