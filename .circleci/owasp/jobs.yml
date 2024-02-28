@@ -72,6 +72,10 @@
           environment: nightly
           target: frontend
           target_env: <<parameters.target_env>>
+      #test if something weird is happening after frontend scan
+      - run:
+        name: Verify completion of frontend scan
+        command: echo "Frontend scan completed successfully"
       - login-cloud-dot-gov:
           cf-password: <<parameters.cf_password>>
           cf-space: <<parameters.cf_space>>
