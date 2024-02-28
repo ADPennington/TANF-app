@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # pipefail is needed to correctly carry over the exit code from zap-full-scan.py
 set -o pipefail
