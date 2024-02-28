@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # see every line of output
 set -x
 
