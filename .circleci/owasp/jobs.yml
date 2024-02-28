@@ -68,8 +68,8 @@
       - cf-check
       - docker-compose-check
       - login-cloud-dot-gov:
-          cf-username: <<parameters.cf_username>>
           cf-password: <<parameters.cf_password>>
+          cf-username: <<parameters.cf_username>>
           cf-org: <<parameters.cf_org>>
           cf-space: <<parameters.cf_space>>
       - run-owasp-scan:
