@@ -85,5 +85,5 @@
           command: cat $BASH_ENV
       - run:
           name: Run post-processing task to record OWASP ZAP results
-          command: chmod +x ./scripts/run-owasp-scan.sh
+          command: bash ./scripts/run-owasp-scan.sh
           
