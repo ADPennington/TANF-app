@@ -85,4 +85,4 @@
           command: echo "Frontend scan completed successfully"
       - run:
           name: Run post-processing task to record OWASP ZAP results
-          command: ./scripts/run_owasp_scan.sh tdp-backend-staging
+          command: ./scripts/run_owasp_scan.sh
