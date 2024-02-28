@@ -83,7 +83,8 @@
       - run:
           name: Verify completion of frontend scan
           command: echo "Frontend scan completed successfully"
-      # - run:
-      #     name: Run post-processing task to record OWASP ZAP results
+      - run:
+        name: Run post-processing task to record OWASP ZAP results
+        command: echo "extra command"
       #     command: ./scripts/run_owasp_scan.sh
           
