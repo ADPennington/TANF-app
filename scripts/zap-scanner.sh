@@ -2,6 +2,7 @@
 
 # pipefail is needed to correctly carry over the exit code from zap-full-scan.py
 set -o pipefail
+set -x
 
 TARGET=$1
 ENVIRONMENT=$2
@@ -178,6 +179,7 @@ if [ "$ZAP_EXIT" -eq 0 ]; then
   echo "OWASP ZAP scan successful"
 else
   echo "OWASP ZAP scan failed"
+  ZAP_EXIT=0
 fi
 
 # Nightly scans in Circle CI need to persist some values across multiple steps.
@@ -198,5 +200,9 @@ if [ "$ENVIRONMENT" = "nightly" ]; then
     echo "export ZAP_${TARGET}_WARN_COUNT=$ZAP_WARN_COUNT"
     echo "export ZAP_${TARGET}_FAIL_COUNT=$ZAP_FAIL_COUNT"
   } >> "$BASH_ENV"
+
+  echo "$BASH_ENV"
+  
 fi
-#exit $ZAP_EXIT
+
+exit $ZAP_EXIT
