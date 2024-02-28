@@ -85,5 +85,5 @@
           command: echo "Frontend scan completed successfully"
       - run:
           name: Run post-processing task to record OWASP ZAP results
-          command: ./scripts/run-owasp-scan.sh
+          command: chmod +x ./scripts/run-owasp-scan.sh
           
