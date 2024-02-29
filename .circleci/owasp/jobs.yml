@@ -95,7 +95,7 @@
       - run:
           name: Run post-processing task to record OWASP ZAP results
           command: |
-            python manage.py process_owasp_scan $CIRCLE_BUILD_NUM \
+            python3 manage.py process_owasp_scan $CIRCLE_BUILD_NUM \
             --backend-pass-count $ZAP_BACKEND_PASS_COUNT \
             --backend-warn-count $ZAP_BACKEND_WARN_COUNT \
             --backend-fail-count $ZAP_BACKEND_FAIL_COUNT \
