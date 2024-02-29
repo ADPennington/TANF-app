@@ -12,6 +12,6 @@ else
     echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
 
     apt-get update
-    apt-get install cf7-cli
+    apt-get install -y cf7-cli
 
 fi
