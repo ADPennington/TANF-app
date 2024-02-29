@@ -72,6 +72,12 @@
           cf-username: <<parameters.cf_username>>
           cf-org: <<parameters.cf_org>>
           cf-space: <<parameters.cf_space>>
+      - run:
+          name: CF CLI and run-task Test
+          command: |
+            echo "Testing cf run-task command with a simple echo task..."
+            cf run-task tdp-backend-staging --command "echo 'Hello, World!'" --name test-echo-task
+            echo "If you see this message, 'cf run-task' is working."
       - run-owasp-scan:
           environment: nightly
           target: backend
