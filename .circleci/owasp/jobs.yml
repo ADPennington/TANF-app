@@ -84,5 +84,14 @@
           name: Print BASH_ENV Contents
           command: cat $BASH_ENV
       - run:
+          name: Cloud Foundry CLI Check
+          command: |
+            if ! command -v cf &> /dev/null; then
+              echo "Cloud Foundry CLI ('cf') is not installed. Please install it to proceed."
+              exit 1
+            else
+              echo "Cloud Foundry CLI ('cf') is installed."
+            fi
+      - run:
           name: Run post-processing task to record OWASP ZAP results
           command: bash ./scripts/run-owasp-scan.sh
