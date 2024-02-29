@@ -84,6 +84,15 @@
           name: Print BASH_ENV Contents
           command: cat $BASH_ENV
       - run:
+          name: Ensure correct working directory
+          command: |
+            if [ "$(pwd)" != "/home/circleci/tdp-apps/tdrs-backend" ]; then
+              echo "Changing to the correct directory."
+              cd /home/circleci/tdp-apps/tdrs-backend
+            else
+              echo "Already in the correct directory."
+            fi
+      - run:
           name: Run post-processing task to record OWASP ZAP results
           command: |
             python manage.py process_owasp_scan $CIRCLE_BUILD_NUM \
@@ -94,5 +103,3 @@
             --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT \
             --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT \
             --project-slug "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
-
-          
