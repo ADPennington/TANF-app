@@ -21,26 +21,13 @@ CMD_ARGS=(
     --frontend-fail-count ${ZAP_FRONTEND_FAIL_COUNT:-0}
     --project-slug $PROJECT_SLUG
 )
-#echo $CMD_ARGS
+echo $CMD_ARGS
 
 # Evaluate the full command before passing it in so it doesn't
 # get improperly interpolated by Cloud.gov.
-#CMD="python manage.py process_owasp_scan ${CMD_ARGS[@]} && echo 'goodbye'"
-#echo $CMD
+cd tdrs-backend
+CMD="python manage.py process_owasp_scan ${CMD_ARGS[@]} && echo 'goodbye'"
+echo $CMD
 
 # Submit a CF Task for execution that will run the necessary command
-#cf run-task tdp-backend-staging --command "$CMD" --name nightly-owasp-scan
-
-# Format CMD_ARGS into a string to pass to echo and python manage.py
-CMD_ARGS_STR="${CMD_ARGS[*]}"
-echo "CMD_ARGS: $CMD_ARGS_STR"
-
-# Echo and run the Django management command, displaying its output
-echo "Running process_owasp_scan.py with arguments: $CMD_ARGS_STR"
-CMD_OUTPUT=$(python manage.py process_owasp_scan ${CMD_ARGS[@]})
-echo "$CMD_OUTPUT"
-
-# Proceed with the cf command
-FINAL_CMD="python manage.py process_owasp_scan ${CMD_ARGS[@]} && echo 'goodbye'"
-echo "Running cf command with FINAL_CMD: $FINAL_CMD"
-cf run-task tdp-backend-staging --command "$FINAL_CMD" --name nightly-owasp-scan
+cf run-task tdp-backend-staging --command "$CMD" --name nightly-owasp-scan

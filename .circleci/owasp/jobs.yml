@@ -85,15 +85,4 @@
           command: cat $BASH_ENV
       - run:
           name: Run post-processing task to record OWASP ZAP results
-          command: |
-            # Change to the correct directory where manage.py is located
-            cd /home/circleci/tdp-apps/tdrs-backend
-
-            python3 manage.py process_owasp_scan $CIRCLE_BUILD_NUM \
-            --backend-pass-count $ZAP_BACKEND_PASS_COUNT \
-            --backend-warn-count $ZAP_BACKEND_WARN_COUNT \
-            --backend-fail-count $ZAP_BACKEND_FAIL_COUNT \
-            --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT \
-            --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT \
-            --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT \
-            --project-slug "${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
+          command: bash ./scripts/run-owasp-scan.sh
