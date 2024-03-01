@@ -104,14 +104,10 @@
             set -x
             # Construct the project slug from the current branch name and user
             PROJECT_SLUG=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-            
             SCRIPT_PATH="/tmp/task-script.sh"
-      
             # Creating the script
             echo "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count ${ZAP_BACKEND_PASS_COUNT:-0} --backend-warn-count ${ZAP_BACKEND_WARN_COUNT:-0} --backend-fail-count ${ZAP_BACKEND_FAIL_COUNT:-0} --frontend-pass-count ${ZAP_FRONTEND_PASS_COUNT:-0} --frontend-warn-count ${ZAP_FRONTEND_WARN_COUNT:-0} --frontend-fail-count ${ZAP_FRONTEND_FAIL_COUNT:-0} --project-slug $PROJECT_SLUG" > $SCRIPT_PATH
-      
             # Ensure the script is executable
             chmod +x $SCRIPT_PATH
-      
             # Run the CF task using the script
             cf run-task tdp-backend-staging --command "bash $SCRIPT_PATH" --name nightly-owasp-scan
