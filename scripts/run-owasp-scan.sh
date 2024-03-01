@@ -22,6 +22,7 @@ CMD_ARGS=(
     --project-slug $PROJECT_SLUG
 )
 echo $CMD_ARGS
+echo "hello"
 
 # Evaluate the full command before passing it in so it doesn't
 # get improperly interpolated by Cloud.gov.
