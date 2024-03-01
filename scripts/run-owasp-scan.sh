@@ -31,4 +31,4 @@ CMD="python manage.py process_owasp_scan ${CMD_ARGS[@]}"
 echo $CMD
 
 # Submit a CF Task for execution that will run the necessary command
-cf run-task tdp-backend-staging --command "\"$CMD\"" --name nightly-owasp-scan
+cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan ${CMD_ARGS[*]}" --name nightly-owasp-scan
