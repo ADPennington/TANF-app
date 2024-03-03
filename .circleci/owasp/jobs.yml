@@ -112,4 +112,4 @@
             # Ensure the script is executable
             #chmod +x $SCRIPT_PATH
             # Run the CF task using the script
-            cf run-task tdp-backend-staging --command $OWASP_SCAN_COMMAND --name test-final-step
+            cf run-task tdp-backend-staging --command "$OWASP_SCAN_COMMAND" --name test-final-step
