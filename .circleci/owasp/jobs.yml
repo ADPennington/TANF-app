@@ -89,7 +89,7 @@
       - run:
           name: export python command to BASH_ENV
           command: |
-            echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app" --name test-final-step\"" >> $BASH_ENV
+            echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app\"" >> $BASH_ENV
             cat $BASH_ENV
       # - run:
       #     name: Cloud Foundry CLI Check
@@ -112,4 +112,4 @@
             # Ensure the script is executable
             #chmod +x $SCRIPT_PATH
             # Run the CF task using the script
-            cf run-task tdp-backend-staging --command $OWASP_SCAN_COMMAND
+            cf run-task tdp-backend-staging --command $OWASP_SCAN_COMMAND --name test-final-step
