@@ -78,38 +78,22 @@
       #       echo "Testing cf run-task command with a simple echo task..."
       #       cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app" --name test-echo-task
       #       echo "If you see this message, 'cf run-task' is working."
-      # - run-owasp-scan:
-      #     environment: nightly
-      #     target: backend
-      #     target_env: <<parameters.target_env>>
-      # - run-owasp-scan:
-      #     environment: nightly
-      #     target: frontend
-      #     target_env: <<parameters.target_env>>
+      - run-owasp-scan:
+          environment: nightly
+          target: backend
+          target_env: <<parameters.target_env>>
+      - run-owasp-scan:
+          environment: nightly
+          target: frontend
+          target_env: <<parameters.target_env>>
       - run:
-          name: export python command to BASH_ENV
-          command: |
-            echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app\"" >> $BASH_ENV
-            cat $BASH_ENV
-      # - run:
-      #     name: Cloud Foundry CLI Check
-      #     command: |
-      #       if ! command -v cf &> /dev/null; then
-      #         echo "Cloud Foundry CLI ('cf') is not installed. Please install it to proceed."
-      #         exit 1
-      #       else
-      #         echo "Cloud Foundry CLI ('cf') is installed."
-      #       fi
+          name: Configure post-processing command
+          command: bash ./scripts/run-owasp-scan.sh
+            # echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app\"" >> $BASH_ENV
+            # cat $BASH_ENV
       - run:
           name: Run post-processing task to record OWASP ZAP results
           command: |
             set -x
-            # Construct the project slug from the current branch name and user
-            #PROJECT_SLUG=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-            #SCRIPT_PATH="/tmp/task-script.sh"
-            # Creating the script
-            #echo "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count ${ZAP_BACKEND_PASS_COUNT:-0} --backend-warn-count ${ZAP_BACKEND_WARN_COUNT:-0} --backend-fail-count ${ZAP_BACKEND_FAIL_COUNT:-0} --frontend-pass-count ${ZAP_FRONTEND_PASS_COUNT:-0} --frontend-warn-count ${ZAP_FRONTEND_WARN_COUNT:-0} --frontend-fail-count ${ZAP_FRONTEND_FAIL_COUNT:-0} --project-slug $PROJECT_SLUG" > $SCRIPT_PATH
-            # Ensure the script is executable
-            #chmod +x $SCRIPT_PATH
             # Run the CF task using the script
-            cf run-task tdp-backend-staging --command "$OWASP_SCAN_COMMAND" --name test-final-step
+            cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
