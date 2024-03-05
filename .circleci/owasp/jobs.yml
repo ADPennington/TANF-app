@@ -90,14 +90,18 @@
           name: Configure post-processing command
           command: bash ./scripts/run-owasp-scan.sh
             # echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app\"" >> $BASH_ENV
-            # cat $BASH_ENV
       - run:
           name: check bash env contents
           command: cat $BASH_ENV
       - run:
-          name: Run post-processing task to record OWASP ZAP results
+          name: Run cmd with quotes around it
+          command: |
+            set -x
+            echo "$CMD"
+      - run:
+          name: Run cmd WITHOUT quotes around it
           command: |
             set -x
             # Run the CF task using the script
             # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
-            cat $CMD
+            echo $CMD
