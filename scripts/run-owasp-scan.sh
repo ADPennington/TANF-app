@@ -27,8 +27,7 @@ echo $CMD_ARGS
 # get improperly interpolated by Cloud.gov.
 cd tdrs-backend
 #CMD="python manage.py process_owasp_scan ${CMD_ARGS[@]}"
-echo "export CMD=\"python manage.py process_owasp_scan \${CMD_ARGS[@]}\""
-#>> $BASH_ENV
+echo "export CMD=\"python manage.py process_owasp_scan ${CMD_ARGS[*]}\"" >> $BASH_ENV
 eval "$CMD"
 # Submit a CF Task for execution that will run the necessary command
 #cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan ${CMD_ARGS[*]}" --name nightly-owasp-scan
