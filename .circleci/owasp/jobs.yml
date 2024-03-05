@@ -97,4 +97,5 @@
             set -x
             # Run the CF task using the script
             # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
+            eval "$CMD"
             cat $BASH_ENV
