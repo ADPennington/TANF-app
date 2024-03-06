@@ -120,4 +120,4 @@
             # Run the CF task using the script
             # cf run-task tdp-backend-staging  --command "bash -c '$CMD'"  --name test-final-step
             # echo $CIRCLE_BUILD_NUM
-            cf run-task tdp-backend-staging --comand "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count $ZAP_BACKEND_PASS_COUNT --backend-warn-count $ZAP_BACKEND_WARN_COUNT --backend-fail-count $ZAP_BACKEND_FAIL_COUNT --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT --project-slug $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
+            cf run-task tdp-backend-staging --comand "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count $ZAP_BACKEND_PASS_COUNT --backend-warn-count $ZAP_BACKEND_WARN_COUNT --backend-fail-count $ZAP_BACKEND_FAIL_COUNT --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT --project-slug $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --name test-final-step
