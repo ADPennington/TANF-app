@@ -106,9 +106,9 @@
             # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
             echo $CMD
       - run:
-          name: Run cmd escapes
+          name: CF run-task
           command: |
             set -x
             # Run the CF task using the script
-            # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
-            echo "\"$CMD\""
+            cf run-task tdp-backend-<< parameters.target_env >>  --command "\"$CMD\""  --name test-final-step
+            # echo "\"$CMD\""
