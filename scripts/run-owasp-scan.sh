@@ -13,13 +13,13 @@ echo $PROJECT_SLUG
 # by the zap-scanner.sh script for each respective app target.
 CMD_ARGS=(
     "$CIRCLE_BUILD_NUM"
-    --backend-pass-count ${ZAP_BACKEND_PASS_COUNT:-0}
-    --backend-warn-count ${ZAP_BACKEND_WARN_COUNT:-0}
-    --backend-fail-count ${ZAP_BACKEND_FAIL_COUNT:-0}
-    --frontend-pass-count ${ZAP_FRONTEND_PASS_COUNT:-0}
-    --frontend-warn-count ${ZAP_FRONTEND_WARN_COUNT:-0}
-    --frontend-fail-count ${ZAP_FRONTEND_FAIL_COUNT:-0}
-    --project-slug $PROJECT_SLUG
+    "--backend-pass-count" "${ZAP_BACKEND_PASS_COUNT:-0}"
+    "--backend-warn-count" "${ZAP_BACKEND_WARN_COUNT:-0}"
+    "--backend-fail-count" "${ZAP_BACKEND_FAIL_COUNT:-0}"
+    "--frontend-pass-count" "${ZAP_FRONTEND_PASS_COUNT:-0}"
+    "--frontend-warn-count" "${ZAP_FRONTEND_WARN_COUNT:-0}"
+    "--frontend-fail-count "${ZAP_FRONTEND_FAIL_COUNT:-0}"
+    "--project-slug "$PROJECT_SLUG"
 )
 echo $CMD_ARGS
 
