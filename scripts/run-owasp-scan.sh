@@ -18,7 +18,7 @@ CMD_ARGS=(
     "--backend-fail-count" "${ZAP_BACKEND_FAIL_COUNT:-0}"
     "--frontend-pass-count" "${ZAP_FRONTEND_PASS_COUNT:-0}"
     "--frontend-warn-count" "${ZAP_FRONTEND_WARN_COUNT:-0}"
-    "--frontend-fail-count "${ZAP_FRONTEND_FAIL_COUNT:-0}"
+    "--frontend-fail-count" "${ZAP_FRONTEND_FAIL_COUNT:-0}"
     "--project-slug "$PROJECT_SLUG"
 )
 echo $CMD_ARGS
