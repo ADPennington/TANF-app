@@ -92,23 +92,32 @@
             # echo "export OWASP_SCAN_COMMAND=\"python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app\"" >> $BASH_ENV
       - run:
           name: check bash env contents
-          command: cat $BASH_ENV
-      - run:
-          name: Run cmd with quotes around it
           command: |
-            set -x
-            echo "$CMD"
-      - run:
-          name: Run cmd WITHOUT quotes around it
-          command: |
-            set -x
-            # Run the CF task using the script
-            # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
+            cat $BASH_ENV
+            echo $ZAP_BACKEND_PASS_COUNT
+            echo $ZAP_BACKEND_WARN_COUNT
+            echo $ZAP_BACKEND_FAIL_COUNT
+            echo $ZAP_FRONTEND_PASS_COUNT
+            echo $ZAP_FRONTEND_WARN_COUNT
+            echo $ZAP_FRONTEND_FAIL_COUNT
             echo $CMD
+      # - run:
+      #     name: Run cmd with quotes around it
+      #     command: |
+      #       set -x
+      #       echo "$CMD"
+      # - run:
+      #     name: Run cmd WITHOUT quotes around it
+      #     command: |
+      #       set -x
+      #       # Run the CF task using the script
+      #       # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
+      #       echo $CMD
       - run:
           name: CF run-task
           command: |
             set -x
             # Run the CF task using the script
-            cf run-task tdp-backend-staging  --command "bash -c '$CMD'"  --name test-final-step
-            # echo "\"$CMD\""
+            # cf run-task tdp-backend-staging  --command "bash -c '$CMD'"  --name test-final-step
+            # echo $CIRCLE_BUILD_NUM
+            cf run-task tdp-backend-staging --comand "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count $ZAP_BACKEND_PASS_COUNT --backend-warn-count $ZAP_BACKEND_WARN_COUNT --backend-fail-count $ZAP_BACKEND_FAIL_COUNT --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT --project-slug $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
