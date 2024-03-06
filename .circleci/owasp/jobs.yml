@@ -110,5 +110,5 @@
           command: |
             set -x
             # Run the CF task using the script
-            cf run-task tdp-backend-<< parameters.target_env >>  --command "\"$CMD\""  --name test-final-step
+            cf run-task tdp-backend-<< parameters.target_env >>  --command "$CMD"  --name test-final-step
             # echo "\"$CMD\""
