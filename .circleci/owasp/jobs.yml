@@ -114,7 +114,7 @@
       #       # cf run-task tdp-backend-staging --command "$CMD" --name test-final-step
       #       echo $CMD
       - run:
-          name: CF run-task
+          name: CF run-task final
           command: |
             set -x
             cmd_array=(
