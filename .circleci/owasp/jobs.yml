@@ -72,12 +72,12 @@
           cf-username: <<parameters.cf_username>>
           cf-org: <<parameters.cf_org>>
           cf-space: <<parameters.cf_space>>
-      # - run:
-      #     name: CF CLI and run-task Test
-      #     command: |
-      #       echo "Testing cf run-task command with a simple echo task..."
-      #       cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan 1100 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app" --name test-echo-task
-      #       echo "If you see this message, 'cf run-task' is working."
+      - run:
+          name: CF CLI and run-task Test
+          command: |
+            echo "Testing cf run-task command with a simple echo task..."
+            cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan 1441 --backend-pass-count 106 --backend-warn-count 4 --backend-fail-count 1 --frontend-pass-count 122 --frontend-warn-count 3 --frontend-fail-count 3 --project-slug ADPennington/TANF-app" --name test-echo-task
+            echo "If you see this message, 'cf run-task' is working."
       - run-owasp-scan:
           environment: nightly
           target: backend
