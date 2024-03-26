@@ -117,24 +117,4 @@
           name: CF run-task final
           command: |
             set -x
-            cmd_array=(
-              cf
-              run-task
-              tdp-backend-staging
-              --command
-              "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count $ZAP_BACKEND_PASS_COUNT --backend-warn-count $ZAP_BACKEND_WARN_COUNT --backend-fail-count $ZAP_BACKEND_FAIL_COUNT --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT --project-slug $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME"
-              --name
-              test-final-step
-            )
-            # Construct cmd with proper double quotes
-            cmd=''
-            
-            for item in "${cmd_array[@]}"; do
-              cmd+=" \"$item\""
-            done
-
-            # Trim leading space
-            cmd="${cmd:1}"
-
-            # Execute the command
-            eval "$cmd"
+            cf run-task tdp-backend-staging --command "python manage.py process_owasp_scan $CIRCLE_BUILD_NUM --backend-pass-count $ZAP_BACKEND_PASS_COUNT --backend-warn-count $ZAP_BACKEND_WARN_COUNT --backend-fail-count $ZAP_BACKEND_FAIL_COUNT --frontend-pass-count $ZAP_FRONTEND_PASS_COUNT --frontend-warn-count $ZAP_FRONTEND_WARN_COUNT --frontend-fail-count $ZAP_FRONTEND_FAIL_COUNT --project-slug $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME" --name test-final-step
