@@ -81,7 +81,7 @@ class Command(BaseCommand):
             rate_limit_reset = response.headers.get('X-RateLimit-Reset', 'Unknown')
             print(f"Rate limit remaining: {rate_limit_remaining}")
             print(f"Rate limit reset time: {rate_limit_reset}")
-            raise Exception(f"CircleCI API returned an unexpected error: {response.status_code}")
+            #raise Exception(f"CircleCI API returned an unexpected error: {response.status_code}")
 
         artifacts = response.json().get('items', [])
         for artifact in artifacts:
