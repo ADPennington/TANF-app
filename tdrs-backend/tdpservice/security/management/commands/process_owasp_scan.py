@@ -71,12 +71,12 @@ class Command(BaseCommand):
         elif response.status_code == 404:
             raise Exception("CircleCI API returned 404 error. The 'circle_project_slug' number may be incorrect.")
         elif response.status_code != 200:
-            logger.error(f"CircleCI API returned {response.status_code} error: {response.text}")
-            logger.error(f"Response headers: {response.headers}")
+            print(f"CircleCI API returned {response.status_code} error: {response.text}")
+            print(f"Response headers: {response.headers}")
             rate_limit_remaining = response.headers.get('X-RateLimit-Remaining', 'Unknown')
             rate_limit_reset = response.headers.get('X-RateLimit-Reset', 'Unknown')
-            logger.error(f"Rate limit remaining: {rate_limit_remaining}")
-            logger.error(f"Rate limit reset time: {rate_limit_reset}")
+            print(f"Rate limit remaining: {rate_limit_remaining}")
+            print(f"Rate limit reset time: {rate_limit_reset}")
             raise Exception(f"CircleCI API returned an unexpected error: {response.status_code}")
 
         artifacts = response.json().get('items', [])
